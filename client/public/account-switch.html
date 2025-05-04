@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/index.css">
+    <link rel="stylesheet" href="../src/css/account-switch.css">
+    <link rel="stylesheet" href="../src/login-signup.css">
+    <title>TG - Switch Account</title>
+</head>
+
+<body>
+    <div class="bg"></div>
+    <div class="form-wrapper">
+        <div class="form-title">Switch Account</div>
+        <p style="text-align: center; color: #ffffff80; margin-bottom: 30px;">Choose an account to use</p>
+        
+        <div class="accounts-section">
+            <div class="account-list" id="accountsList">
+                <div class="loading-spinner">
+                    <i class="bi bi-arrow-repeat"></i> Loading...
+                </div>
+            </div>
+        </div>
+        
+        <div class="separator">or</div>
+        
+        <div class="bottom">
+            Need to log in to a different account? 
+            <a href="/login">Log In</a>
+        </div>
+    </div>
+
+    <script src="/js/notifications.js"></script>
+    <script src="/js/profileManager.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/account-switch.js"></script>
+    <script src="/js/logout.js"></script>
+</body>
+
+</html> 

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../src/css/index.css">
+    <link rel="stylesheet" href="../src/css/header.css">
+    <link rel="stylesheet" href="../src/css/rightbar.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <title>TG - Profile</title>
+</head>
+
+<body>
+    <div class="bg"></div>
+
+    <div id="header-container"></div>
+
+    <div id="rightbar-container"></div>
+    
+    <div class="wrapper">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-picture">
+                    <img src="/images/default-profile.png" alt="Profile Picture" id="profilePic">
+                </div>
+                <div class="profile-info">
+                    <h1 id="displayName">Display Name</h1>
+                    <p id="username">@username</p>
+                </div>
+            </div>
+            
+            <div class="profile-details">
+                <div class="detail-item">
+                    <label>Gender</label>
+                    <p id="gender">Not specified</p>
+                </div>
+                <div class="detail-item">
+                    <label>Date of Birth</label>
+                    <p id="dob">Not specified</p>
+                </div>
+                <div class="detail-item">
+                    <label>Friends</label>
+                    <a href="/friends" class="friend-count" onclick="console.log('Friend count clicked');">
+                        <i class="bi bi-people-fill"></i> <span id="friendCount">0</span>
+                    </a>
+                </div>
+                <button class="edit-profile-btn" id="editProfile">
+                    <i class="bi bi-pencil-fill"></i> Edit Profile
+                </button>
+                <button class="change-password-btn" id="changePassword">
+                    <i class="bi bi-key-fill"></i> Change Password
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <h2>Change Password</h2>
+            <form id="changePasswordForm">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <div class="password-input-container">
+                        <input type="password" id="currentPassword" name="currentPassword" required>
+                        <i class="bi bi-eye-slash-fill toggle-password" data-target="currentPassword"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <div class="password-input-container">
+                        <input type="password" id="newPassword" name="newPassword" required minlength="8">
+                        <i class="bi bi-eye-slash-fill toggle-password" data-target="newPassword"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm New Password</label>
+                    <div class="password-input-container">
+                        <input type="password" id="confirmPassword" name="confirmPassword" required minlength="8">
+                        <i class="bi bi-eye-slash-fill toggle-password" data-target="confirmPassword"></i>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="cancelChangePassword">Cancel</button>
+                    <button type="submit">Change Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Profile</h2>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="editDisplayName">Display Name</label>
+                    <input type="text" id="editDisplayName" name="displayName" maxlength="15">
+                </div>
+                <div class="form-group">
+                    <label for="editGender">Gender</label>
+                    <select id="editGender" name="gender">
+                        <option value="">Not specified</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editDob">Date of Birth</label>
+                    <input type="date" id="editDob" name="dateOfBirth">
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="cancelEditProfile">Cancel</button>
+                    <button type="submit">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Upload Profile Picture Modal -->
+    <div id="uploadPicModal" class="modal">
+        <div class="modal-content">
+            <h2>Upload Profile Picture</h2>
+            <form id="uploadPicForm" enctype="multipart/form-data">
+                <div class="preview-container" id="imagePreview">
+                    <img src="/images/default-profile.png" alt="Preview">
+                    <div class="preview-overlay">
+                        <i class="bi bi-cloud-arrow-up-fill"></i>
+                        <span>Preview</span>
+                    </div>
+                </div>
+                
+                <div class="file-upload-container">
+                    <label class="file-upload-button">
+                        <i class="bi bi-image"></i>
+                        <span>Choose Image</span>
+                        <input type="file" id="profilePicFile" name="profilePic" accept="image/*">
+                    </label>
+                    <div class="selected-file-name" id="selectedFileName">No file selected</div>
+                    <p class="form-hint">Max file size: 5MB. Supported formats: JPG, PNG, GIF</p>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" id="cancelUploadPic">Cancel</button>
+                    <button type="submit" id="uploadPicButton" disabled>
+                        <i class="bi bi-cloud-upload"></i> Upload
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/notifications.js"></script>
+    <script src="/js/profileManager.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/profile.js"></script>
+    <script src="/js/logout.js"></script>
+    <script src="../src/js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../src/css/index.css">
+    <link rel="stylesheet" href="../src/css/header.css">
+    <link rel="stylesheet" href="../src/css/rightbar.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/chat.css">
+    <title>TG - User Profile</title>
+</head>
+
+<body>
+    <div class="bg"></div>
+
+    <div id="header-container"></div>
+
+    <div id="rightbar-container"></div>
+    
+    <div class="wrapper">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-picture">
+                    <img src="/images/default-profile.png" alt="Profile Picture" id="userProfilePic">
+                    <!-- Online indicator will be added here by JS -->
+                </div>
+                <div class="profile-info">
+                    <h1 id="userDisplayName">Display Name</h1>
+                    <p id="userUsername">@username</p>
+                    <!-- Online status will be added here by JS -->
+                </div>
+            </div>
+            
+            <div class="profile-details">
+                <div class="detail-item">
+                    <label>Gender</label>
+                    <p id="userGender">Not specified</p>
+                </div>
+                <div class="detail-item">
+                    <label>Date of Birth</label>
+                    <p id="userDob">Not specified</p>
+                </div>
+                <div class="detail-item">
+                    <label>Friends</label>
+                    <a href="#" class="friend-count" id="userFriendsLink">
+                        <i class="bi bi-people-fill"></i> <span id="userFriendCount">0</span>
+                    </a>
+                </div>
+                <div class="detail-item">
+                    <label>Friendship Status</label>
+                    <p id="friendshipStatus">Not friends</p>
+                </div>
+                <div class="user-actions">
+                    <button id="friendBtn" class="action-btn friend-btn">
+                        <i class="bi bi-person-plus-fill"></i>
+                        Add Friend
+                    </button>
+                    <button id="sendMessageBtn" class="action-btn">
+                        <i class="bi bi-chat-dots-fill"></i>
+                        Send Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/notifications.js"></script>
+    <script src="/js/profileManager.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+        // Initialize only the current user's profile in navbar and sidebar
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Get current user's profile data
+            const userData = await profileManager.fetchProfileData();
+            if (userData) {
+                // Update only navbar and sidebar profile pictures
+                const navProfilePic = document.getElementById('navProfilePic');
+                const sidebarProfilePic = document.getElementById('sidebarProfilePic');
+                
+                if (navProfilePic) {
+                    navProfilePic.src = userData.profilePic || '/images/default-profile.png';
+                    navProfilePic.alt = userData.displayName || 'Profile';
+                    navProfilePic.classList.add('round-profile');
+                }
+                
+                if (sidebarProfilePic) {
+                    sidebarProfilePic.src = userData.profilePic || '/images/default-profile.png';
+                    sidebarProfilePic.alt = userData.displayName || 'Profile';
+                }
+                
+                // Update sidebar profile link text
+                const profileLink = document.querySelector('.sidebar a[href="/profile"]');
+                if (profileLink && sidebarProfilePic) {
+                    profileLink.innerHTML = '';
+                    profileLink.appendChild(sidebarProfilePic);
+                    profileLink.appendChild(document.createTextNode(userData.displayName || 'Profile'));
+                }
+            }
+        });
+    </script>
+    <script src="/js/userProfile.js"></script>
+    <script src="/js/logout.js"></script>
+    <script src="../src/js/index.js"></script>
+</body>
+
+</html> 

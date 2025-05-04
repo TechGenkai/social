@@ -1,0 +1,89 @@
+.rightbar {
+    position: fixed;
+    left: 0;
+    top: 70px; /* Adjust based on navbar height */
+    width: 150px;
+    height: calc(100vh - 75px); /* Full height minus navbar */
+    backdrop-filter: blur(10px);
+    background-color: rgba(18, 18, 25, 0.4);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1;
+    color: #fff;
+    transition: all 0.3s ease-out;
+    border-radius: 5px;
+}
+
+.rightbar h2 {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    text-shadow: 0 0 5px rgba(242, 24, 217, 0.5); /* Using --dragon color */
+}
+
+.rightbar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    padding-right: 30px;
+    border-radius: 10px;
+    transition: all 0.3s ease-out;
+    position: relative;
+}
+
+.rightbar a:nth-last-child(1) {
+    margin-top: 0px;
+    margin-bottom: 22px;   /*fix last child*/
+}
+
+.rightbar a:nth-last-child(2) {
+    margin-top: auto;
+    margin-bottom: 1px;
+}
+
+.rightbar a img {
+    width: 27px;
+    height: 27px;
+    transition: transform 0.3s ease-out, filter 0.3s ease-out;
+}
+
+/* Make profile picture circular */
+.rightbar a[href="/profile"] img {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ffffff80;
+    aspect-ratio: 1/1;
+}
+
+.rightbar a:hover {
+    background: #33333380;
+    box-shadow: 0 0 5px var(--dragon);
+    text-shadow: 0 0 5px var(--dragon);
+}
+
+.rightbar a:hover img {
+    filter: drop-shadow(0px 0px 2px var(--dragon));
+    transform: scale(1.1);
+}
+
+/* Active state for current page */
+.rightbar a.active {
+    background: #333333b0;
+    color: var(--dragon);
+    box-shadow: 0 0 8px var(--dragon);
+    text-shadow: 0 0 5px var(--dragon);
+    border-left: 3px solid var(--dragon);
+}
+
+.rightbar a.active img {
+    filter: drop-shadow(0px 0px 3px var(--dragon));
+    transform: scale(1.1);
+}

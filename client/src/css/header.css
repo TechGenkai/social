@@ -1,0 +1,105 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 20px;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.search {
+    align-items: center;    
+    transition: all 0.3s ease-out;
+    width: 450px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.Org-logo{
+    color: white;
+    display: flex;
+    gap: 4px;
+}
+
+.Org-logo img{
+    width: 50px;
+    height: 50px;
+}
+
+.search-bar input {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    background: #33333380;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-bar input:hover {
+    background: #333333b0;
+    box-shadow: 0 0 5px var(--dragon);
+}
+
+.nav-icons {
+    display: flex;
+    gap: 30px;
+    margin-right: 30px;
+    cursor: pointer; 
+}
+
+.nav-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.nav-icons a img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease-out, filter 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.nav-icons a img:hover {
+    filter: drop-shadow(0px 0px 2px var(--dragon));
+    transform: scale(1.14);
+    opacity: 1;
+}
+
+/* Active state for header icons */
+.nav-icons a.active img {
+    filter: drop-shadow(0px 0px 3px var(--dragon));
+    transform: scale(1.14);
+    opacity: 1;
+}
+
+.nav-icons a.active {
+    position: relative;
+}
+
+.nav-icons a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: var(--dragon);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--dragon);
+}

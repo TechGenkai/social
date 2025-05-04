@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../src/css/index.css">
+    <link rel="stylesheet" href="../src/css/header.css">
+    <link rel="stylesheet" href="../src/css/rightbar.css">
+    <link rel="stylesheet" href="../src/css/friends.css">
+    <title>TG - Friends</title>
+</head>
+
+<body>
+    <div class="bg"></div>
+
+    <div id="header-container"></div>
+
+    <div id="rightbar-container"></div>
+    
+    <div class="wrapper">
+        <div class="friends-container">
+            <div class="friends-header">
+                <h1 id="page-title">Friends</h1>
+                <p>Manage your friends and friend requests</p>
+            </div>
+
+            <div class="friends-tabs tabs-container">
+                <div class="tab active" data-tab="all-friends">
+                    <span id="friends-title">All Friends</span> <span class="friend-count" id="friend-count">0</span>
+                </div>
+                <div class="tab" data-tab="pending-requests">
+                    Pending Requests <span class="friend-count" id="request-count">0</span>
+                </div>
+            </div>
+
+            <div class="search-friends">
+                <i class="bi bi-search"></i>
+                <input type="text" id="friend-search" placeholder="Search friends">
+            </div>
+
+            <div class="tab-content active" id="all-friends-content">
+                <div class="friend-list" id="friendsList">
+                    <!-- Friends will be loaded here -->
+                    <div class="no-friends">You haven't added any friends yet</div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="pending-requests-content">
+                <div class="friend-requests" id="friendRequests">
+                    <!-- Friend requests will be loaded here -->
+                    <div class="no-requests">No pending friend requests</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/notifications.js"></script>
+    <script src="/js/profileManager.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/friends.js"></script>
+    <script src="/js/logout.js"></script>
+    <script src="../src/js/index.js"></script>
+</body>
+
+</html> 
