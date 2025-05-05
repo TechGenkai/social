@@ -1,0 +1,272 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 500px;
+    background-color: black;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    --dragon: #f218d9f6;
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('./images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+
+.form-wrapper {
+    background: #1a1a1a50; /* Matches sidebar */
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 15px rgba(242, 24, 217, 0.2); /* Subtle --dragon glow */
+    color: #fff;
+    z-index: 1;
+}
+
+.form-title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 5px rgba(242, 24, 217, 0.5);
+}
+
+.field {
+    position: relative;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.inp {
+    width: 100%;
+    padding: 12px 40px; /* Equal padding for icons on both sides */
+    border: none;
+    border-radius: 20px;
+    background: #33333380;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease-out;
+    box-sizing: border-box;
+}
+
+.inp:focus {
+    background: #333333b0;
+    box-shadow: 0 0 5px var(--dragon);
+}
+
+.label {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff80;
+    font-size: 16px;
+    pointer-events: none;
+    transition: all 0.3s ease-out;
+}
+
+.inp:focus + .label,
+.inp:not(:placeholder-shown) + .label,
+.label.active {
+    top: -10px;
+    left: 15px;
+    font-size: 12px;
+    color: var(--dragon);
+}
+
+/* Icons */
+.field span {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff80;
+    font-size: 20px;
+    transition: color 0.3s ease-out;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.inp ~ span {
+    color: #ffffff80;
+}
+
+.inp:focus ~ span {
+    color: var(--dragon);
+}
+
+/* Password field styles */
+.field input[type="password"].inp {
+    padding-left: 40px;  /* Space for lock icon */
+    padding-right: 40px; /* Space for eye icon */
+}
+
+/* Lock icon */
+.field input[type="password"] ~ .bi-lock {
+    left: 15px;
+    pointer-events: none;
+}
+
+/* Eye icon */
+.toggle-pass {
+    position: absolute;
+    right: 15px !important;
+    left: auto !important;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff80;
+    font-size: 20px;
+    transition: color 0.3s ease-out;
+    z-index: 100; /* Ensure it's above everything */
+    cursor: pointer;
+    pointer-events: auto !important;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-pass:hover {
+    color: var(--dragon);
+}
+
+/* Label positioning for password field */
+.field input[type="password"] ~ .label {
+    left: 40px;
+}
+
+.field input[type="password"]:focus ~ .label,
+.field input[type="password"]:not(:placeholder-shown) ~ .label {
+    left: 15px;
+}
+
+/* Action section */
+.action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.action label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #ffffff80;
+}
+
+.action a {
+    color: var(--dragon);
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+}
+
+.action a:hover {
+    text-shadow: 0 0 5px var(--dragon);
+}
+
+/* Submit button */
+#login-btn, #signup-btn{
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    background: var(--dragon);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+#login-btn:hover, #signup-btn:hover {
+    background: #f218d9;
+    box-shadow: 0 0 10px var(--dragon);
+}
+
+/* Separator */
+.separator {
+    text-align: center;
+    margin: 20px 0;
+    color: #ffffff80;
+    position: relative;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: #ffffff80;
+}
+
+.separator::before {
+    left: 0;
+}
+
+.separator::after {
+    right: 0;
+}
+
+/* Alternative login buttons */
+.alternative {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.alternative span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #33333380;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.alternative span:hover {
+    background: #333333b0;
+    box-shadow: 0 0 5px var(--dragon);
+    transform: scale(1.1);
+}
+
+/* Bottom link */
+.bottom {
+    text-align: center;
+    font-size: 14px;
+    color: #ffffff80;
+}
+
+.bottom a {
+    color: var(--dragon);
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+}
+
+.bottom a:hover {
+    text-shadow: 0 0 5px var(--dragon);
+}

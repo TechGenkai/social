@@ -1,0 +1,256 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 500px;
+    background-color: black;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    --dragon: #f218d9f6;
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('./images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper {
+    position: fixed;
+    height: 50%;
+    width: 50%;
+    border-radius: 5px;
+    background: #1a1a1a50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    z-index: 0;
+    box-shadow: 0 0 15px rgba(242, 24, 217, 0.2);
+}
+
+.profile-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.profile-picture-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#profile-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--dragon);
+    box-shadow: 0 0 10px rgba(242, 24, 217, 0.3);
+}
+
+.upload-btn {
+    background-color: var(--dragon);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    font-size: 16px;
+    width: fit-content;
+}
+
+.upload-btn:hover {
+    background-color: #f218d9;
+    box-shadow: 0 0 10px var(--dragon);
+}
+
+.details-section {
+    flex: 1;
+    padding: 20px;
+    color: white;
+}
+
+.form-title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 5px rgba(242, 24, 217, 0.5);
+}
+
+.field {
+    position: relative;
+    margin-bottom: 25px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+}
+
+.inp {
+    width: 100%;
+    padding: 10px 35px; /* Equal padding on both sides */
+    border: none;
+    border-radius: 5px;
+    background: #33333380;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease-out;
+    box-sizing: border-box;
+    text-indent: 0; /* Reset any default text indentation */
+}
+
+.inp:focus {
+    background: #333333b0;
+    box-shadow: 0 0 5px var(--dragon);
+}
+
+.label {
+    position: absolute;
+    left: 35px; /* Align with text start position */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+    transition: all 0.3s ease-out;
+}
+
+.inp:focus + .label,
+.inp:not(:placeholder-shown) + .label {
+    top: -10px;
+    left: 10px; /* Adjust to align better when floating */
+    font-size: 12px;
+    background: #1a1a1a50;
+    padding: 0 5px;
+    color: var(--dragon);
+}
+
+.field span {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    transition: color 0.3s ease-out;
+    z-index: 3;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    pointer-events: none; /* Prevent icon from interfering with input */
+}
+
+/* Right-aligned icons */
+.calendar-icon,
+select.inp + span {
+    left: auto;
+    right: 10px;
+}
+
+/* Special padding for right-icon inputs */
+input[type="date"].inp,
+select.inp {
+    padding-left: 35px; /* Match the text indent of display name field */
+}
+
+/* Adjust text alignment for select and date inputs */
+select.inp option {
+    padding-left: 25px; /* Indent options to match the selected value */
+}
+
+/* Icon hover effects */
+.field:hover span {
+    color: var(--dragon);
+}
+
+.field .inp:focus ~ span {
+    color: var(--dragon);
+}
+
+.submit-btn {
+    background: var(--dragon);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 90%;
+    margin: 20px auto;
+    display: block;
+    transition: all 0.3s ease-out;
+}
+
+.submit-btn:hover {
+    background: #f218d9;
+    box-shadow: 0 0 10px var(--dragon);
+    transform: scale(1.02);
+}
+
+/* Specific styles for select elements */
+select.inp {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+/* Date input specific styles */
+input[type="date"].inp {
+    padding-right: 10px; /* Reduce right padding */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.6;
+    width: 20px;
+    height: 20px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+/* Hide the default calendar icon */
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Ensure calendar icon doesn't interfere with native button */
+.calendar-icon {
+    pointer-events: none;
+    right: 35px;
+}
+
+/* Specific adjustments for select and date inputs */
+select.inp,
+input[type="date"].inp {
+    text-align: left;
+    padding-right: 40px; /* Space for the icon/button */
+}
