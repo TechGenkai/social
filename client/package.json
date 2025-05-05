@@ -1,0 +1,10 @@
+{
+    "name": "social-media-client",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "npx serve public"
+    },
+    "dependencies": {
+        "socket.io-client": "^4.5.4"
+    }
+}
